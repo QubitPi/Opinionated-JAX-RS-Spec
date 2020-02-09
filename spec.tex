@@ -1,111 +1,130 @@
-\documentclass[11pt]{book}
-\usepackage[hyperref, thmmarks]{styles/ntheorem}
-\usepackage{framed}
-\usepackage{times}
-\usepackage{textcomp}
-\usepackage{tabularx}
-\usepackage{moreverb}
-\usepackage[pdftex]{graphicx}
-\usepackage{amssymb}
+\documentclass[12pt]{book}
+
+\usepackage[margin=1.5cm]{geometry}
+
+% font
+\usepackage{fontspec}
+\setmainfont{Ubuntu}
+\setmonofont{Ubuntu Mono}
+\setsansfont{Ubuntu}
+
 \usepackage{float}
-\usepackage[pdftex,
-  pdftitle={JAX-RS: Java API for RESTful Web Services},
-  pdfauthor={Santiago Pericas-Geertsen and Pavel Bucek, Oracle},
-  pdfsubject={JAX-RS: Java API for RESTful Web Services},
-  pdfkeywords={Java XML Web Services API REST RESTful},
-  pdftex,
-  colorlinks=true,
-  linkcolor=black,
-  citecolor=black,
-  pdfstartview=FitH,
-  letterpaper=true,
-  bookmarksnumbered=true
-]{hyperref}
+\usepackage{graphicx}
 
-% set up page dimensions
-\textwidth = 6.5 in
-\textheight = 9.33 in
-\oddsidemargin = 0.0 in
-\evensidemargin = 0.0 in
-\topmargin = -0.75 in
-\headheight = 15pt
-\headsep = 0.33 in
-\parskip = 6pt
-\parindent = 0.0in
-\footskip=0.5in
+\usepackage{parskip}  % remove indentation
+\usepackage{listings} % code listings
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\usepackage{styles/jsr}
-\theoremstyle{plain}
-%\setlength{\theorempostskipamount}{0pt}
-\newtheorem{ednote}{Editors Note}[chapter]
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=red]{hyperref}
+\urlstyle{same} % Change \url{…} font to the main font instead of mono font
 
-\theoremstyle{nonumberplain}
-\theoremindent0cm
-\theoremseparator{:}
-\newtheorem{nnnote}{Note}[chapter]
+\usepackage{xcolor}
+\definecolor{highlight green}{HTML}{00AA00}
 
-%\usepackage[pagewise, right]{styles/lineno}
-%\usepackage[dvips]{changebar}
-\usepackage{longtable}
 
-%\renewcommand{\today}{September 8, 2008}
+
+%\usepackage[hyperref, thmmarks]{styles/ntheorem}
+%\usepackage{framed}
+%\usepackage{times}
+%\usepackage{textcomp}
+%\usepackage{tabularx}
+%\usepackage{moreverb}
+%\usepackage[pdftex]{graphicx}
+%\usepackage{amssymb}
+%\usepackage{float}
+%\usepackage[pdftex,
+%  pdftitle={JAX-RS: Java API for RESTful Web Services},
+%  pdfauthor={Santiago Pericas-Geertsen and Pavel Bucek, Oracle},
+%  pdfsubject={JAX-RS: Java API for RESTful Web Services},
+%  pdfkeywords={Java XML Web Services API REST RESTful},
+%  pdftex,
+%  colorlinks=true,
+%  linkcolor=black,
+%  citecolor=black,
+%  pdfstartview=FitH,
+%  letterpaper=true,
+%  bookmarksnumbered=true
+%]{hyperref}
+%
+%% set up page dimensions
+%\textwidth = 6.5 in
+%\textheight = 9.33 in
+%\oddsidemargin = 0.0 in
+%\evensidemargin = 0.0 in
+%\topmargin = -0.75 in
+%\headheight = 15pt
+%\headsep = 0.33 in
+%\parskip = 6pt
+%\parindent = 0.0in
+%\footskip=0.5in
+%
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\usepackage{styles/jsr}
+%\theoremstyle{plain}
+%%\setlength{\theorempostskipamount}{0pt}
+%\newtheorem{ednote}{Editors Note}[chapter]
+%
+%\theoremstyle{nonumberplain}
+%\theoremindent0cm
+%\theoremseparator{:}
+%\newtheorem{nnnote}{Note}[chapter]
+%
+%%\usepackage[pagewise, right]{styles/lineno}
+%%\usepackage[dvips]{changebar}
+%\usepackage{longtable}
+%
+%%\renewcommand{\today}{September 8, 2008}
 
 \begin{document}
 
-\frontmatter
-\include{styles/macros}
-\include{styles/jsrfrontstyle}
+%\frontmatter
+%\include{styles/macros}
+%\include{styles/jsrfrontstyle}
+%
+%\include{chapters/titlepage}
+%
+%\cleardoublepage
+%{
+%\small
+%%\include{chapters/license}
+%%\include{chapters/license_final}
+%}
+%
+%\pdfbookmark[0]{Contents}{toc}
+%\tableofcontents
+%
+%\mainmatter
+%\include{styles/jsrmainstyle}
+%
+%%\linenumbers
+%%\nochangebars
+%
+%\setcounter{secnumdepth}{4}
+%
+%\newcommand{\footnoteremember}[2]{\footnote{#2}\newcounter{#1}\setcounter{#1}{\value{footnote}}}
+%\newcommand{\footnoterecall}[1]{\footnotemark[\value{#1}]}
 
-\include{chapters/titlepage}
+    \include{chapters/titlepage}
 
-\cleardoublepage
-{
-\small
-%\include{chapters/license}
-%\include{chapters/license_final}
-}
+    \tableofcontents
 
-\pdfbookmark[0]{Contents}{toc}
-\tableofcontents
+    \include{chapters/intro}
+    \include{chapters/applications}
+    \include{chapters/resources}
+    \include{chapters/providers}
+    \include{chapters/clientapi}
+    \include{chapters/filters}
+    \include{chapters/validation}
+    \include{chapters/asynchronous}
+    \include{chapters/sse}
+    \include{chapters/context}
+    \include{chapters/environment}
+    \include{chapters/delegate}
 
-\mainmatter
-\include{styles/jsrmainstyle}
+    \appendix
+    \renewcommand{\chaptermark}[1]{
+      \markboth{\appendixname
+      \ \thechapter.\ #1}{}}
 
-%\linenumbers
-%\nochangebars
-
-\setcounter{secnumdepth}{4}
-
-\newcommand{\footnoteremember}[2]{\footnote{#2}\newcounter{#1}\setcounter{#1}{\value{footnote}}}
-\newcommand{\footnoterecall}[1]{\footnotemark[\value{#1}]}
-
-\include{chapters/intro}
-\include{chapters/applications}
-\include{chapters/resources}
-\include{chapters/providers}
-\include{chapters/clientapi}
-\include{chapters/filters}
-\include{chapters/validation}
-\include{chapters/asynchronous}
-\include{chapters/sse}
-\include{chapters/context}
-\include{chapters/environment}
-\include{chapters/delegate}
-
-\appendix
-\renewcommand{\chaptermark}[1]{
-  \markboth{\appendixname
-  \ \thechapter.\ #1}{}}
-
-\include{chapters/annotations}
-\include{chapters/headers}
-\include{chapters/diagrams}
-\include{chapters/changes}
-
-\backmatter
-
-\include{chapters/refs}
-
+    \include{chapters/diagrams}
 \end{document}
